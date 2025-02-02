@@ -102,4 +102,5 @@ public abstract class Car implements Movable{
             case "West" -> direction = "North";
         }
     }
+
 }
