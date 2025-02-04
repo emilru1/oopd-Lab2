@@ -1,6 +1,6 @@
 import java.awt.*;
 public class Scania extends Car {
-    public double tippingAngle;
+    protected double tippingAngle;
     private final double maxTippingAngel = 70.0;
     //public final static double trimFactor = 1.50;
 
@@ -24,7 +24,6 @@ public class Scania extends Car {
         tippingAngle = Math.min(tippingAngle + angle, maxTippingAngel );
 
     }
-
     public void decreaseTipping(double angle){
         if (getCurrentSpeed() != 0){
             throw new IllegalArgumentException("det går inte tippa när man kör");
@@ -32,7 +31,7 @@ public class Scania extends Car {
         tippingAngle = Math.max(tippingAngle - angle, 0 );
     }
 
-    public void cheakAtngle(double angle) {
+    public void checkAngle(double angle) {
         if (angle > maxTippingAngel || angle < 0) {
             throw new IllegalArgumentException("currentSpeed får inte vara i intervall [0, 70,0]");
 
