@@ -30,6 +30,6 @@ class ScaniaTest {
     void move() {
         Scania scania = new Scania();
         scania.tippingAngle = 40;
-        assertEquals(scania.move() = new IllegalArgumentException);
+        assertThrows(IllegalArgumentException.class, scania::move);
     }
 }
