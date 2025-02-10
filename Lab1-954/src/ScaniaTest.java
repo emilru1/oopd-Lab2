@@ -7,8 +7,8 @@ class ScaniaTest {
     @Test
     void testGetTippingAngle() {
         Scania scania = new Scania();
-        scania.tippingAngle = 40;
-        assertEquals(40, scania.tippingAngle);
+        scania.increaseTipping(40);
+        assertEquals(40, scania.getTippingAngle());
     }
 
     @Test
@@ -21,7 +21,7 @@ class ScaniaTest {
     @Test
     void testDecreaseTipping() {
         Scania scania = new Scania();
-        scania.tippingAngle = 50;
+        scania.increaseTipping(50);
         scania.decreaseTipping(5);
         assertEquals(45, scania.getTippingAngle());
     }
@@ -29,7 +29,7 @@ class ScaniaTest {
     @Test
     void move() {
         Scania scania = new Scania();
-        scania.tippingAngle = 40;
+        scania.increaseTipping(40);
         assertThrows(IllegalArgumentException.class, scania::move);
     }
 }

@@ -6,7 +6,7 @@ public class Iveco extends Vehicle implements TruckRamp{
     protected boolean loadMode;
     protected boolean fairDistance;
     protected int maxCapacity;
-    protected ArrayList <String> loadedCars;
+    protected ArrayList <PersonalCar> loadedCars;
 
     public Iveco() {
         super(2, 130,"Iveco", Color.BLUE);
@@ -22,7 +22,7 @@ public class Iveco extends Vehicle implements TruckRamp{
         return enginePower * 0.01;
     }
     @Override
-    public short startLoadMode(){
+    public void startLoadMode(){
         if (getCurrentSpeed() > 0){
             throw new IllegalArgumentException("Lastbilen står ej stilla.");
         }
@@ -30,7 +30,7 @@ public class Iveco extends Vehicle implements TruckRamp{
             throw new IllegalArgumentException("Lastbilen är redan i LoadMode.");
         }
         this.loadMode = true;
-        return 0;
+
     }
     @Override
     public void exitLoadMode() {
@@ -71,7 +71,7 @@ public class Iveco extends Vehicle implements TruckRamp{
             throw new IllegalArgumentException("Lastbilen kan inte lasta fler än " + maxCapacity + " bilar.");
 
         }
-        this.loadedCars.add(personalCar.modelName);
+        this.loadedCars.add(personalCar);
 
     }
     @Override
@@ -86,7 +86,7 @@ public class Iveco extends Vehicle implements TruckRamp{
         this.loadedCars.remove(this.loadedCars.size() - 1);
     }
     @Override
-    public ArrayList<String> getLoadedCars() {
+    public ArrayList<PersonalCar> getLoadedCars() {
         return new ArrayList<>(this.loadedCars);
 
     }

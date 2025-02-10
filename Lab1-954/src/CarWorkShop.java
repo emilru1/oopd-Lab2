@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-public class CarWorkShop<T> {
+public class CarWorkShop<T extends PersonalCar> {
 
     protected final ArrayList<T> carsIn;
     protected final int maxCapacity;

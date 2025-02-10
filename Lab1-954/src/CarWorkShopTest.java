@@ -6,17 +6,21 @@ class CarWorkShopTest {
 
     @Test
     void testBringCar() {
-        CarWorkShop<Object> carWorkShop = new CarWorkShop<>(2);
-        carWorkShop.bringCar(1);
-        carWorkShop.bringCar(2);
+        CarWorkShop<PersonalCar> carWorkShop = new CarWorkShop<>(2);
+        Volvo240 volvo = new Volvo240();
+        Saab95 saab95 = new Saab95();
+        carWorkShop.bringCar(volvo);
+        carWorkShop.bringCar(saab95);
         assertEquals(2, carWorkShop.getCarsIn().size());
     }
 
     @Test
     void testReturnCar() {
-        CarWorkShop<Object> carWorkShop = new CarWorkShop<>(2);
-        carWorkShop.bringCar("volvo");
-        carWorkShop.bringCar("sabb");
+        CarWorkShop<PersonalCar> carWorkShop = new CarWorkShop<>(2);
+        Volvo240 volvo = new Volvo240();
+        Saab95 saab95 = new Saab95();
+        carWorkShop.bringCar(volvo);
+        carWorkShop.bringCar(saab95);
         carWorkShop.returnCar();
         carWorkShop.returnCar();
         assertEquals(0,carWorkShop.getCarsIn().size());
@@ -24,9 +28,11 @@ class CarWorkShopTest {
 
     @Test
     void testGetCarsIn() {
-        CarWorkShop<Object> carWorkShop = new CarWorkShop<>(2);
-        carWorkShop.bringCar("volvo");
-        carWorkShop.bringCar("sabb");
+        CarWorkShop<PersonalCar> carWorkShop = new CarWorkShop<>(2);
+        Volvo240 volvo = new Volvo240();
+        Saab95 saab95 = new Saab95();
+        carWorkShop.bringCar(volvo);
+        carWorkShop.bringCar(saab95);
         assertEquals(2, carWorkShop.getCarsIn().size());
     }
 

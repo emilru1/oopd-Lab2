@@ -1,13 +1,13 @@
 import java.awt.*;
 
 public abstract class Vehicle implements Movable{
-    protected int nrDoors; // Number of doors on the car
+    private final int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
-    protected String modelName;// The car model name
+    private final String modelName;// The car model name
     private Color color;
     protected double x;    // this two instans object är för position for bilar;
-    protected  double y;
+    protected double y;
     protected String direction;
     private final static double trimFactor = 1.25;
 

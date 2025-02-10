@@ -1,7 +1,7 @@
 import java.awt.*;
 public class Scania extends Vehicle implements TruckBed{
-    protected double tippingAngle;
-    protected final double maxTippingAngel = 70.0;
+    private double tippingAngle;
+    private final double maxTippingAngel = 70.0;
 
     //public final static double trimFactor = 1.50;
 
