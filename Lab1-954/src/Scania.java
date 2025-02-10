@@ -1,7 +1,7 @@
 import java.awt.*;
 public class Scania extends Vehicle implements TruckBed{
     protected double tippingAngle;
-    private final double maxTippingAngel = 70.0;
+    protected final double maxTippingAngel = 70.0;
 
     //public final static double trimFactor = 1.50;
 
@@ -22,8 +22,8 @@ public class Scania extends Vehicle implements TruckBed{
         if (getCurrentSpeed() != 0){
             throw new IllegalArgumentException("det går inte tippa när man kör");
         }
-        if (tippingAngle < 0){
-            throw new IllegalArgumentException("tippingAngel kan inte var minder än noll");
+        if (angle < 0){
+            throw new IllegalArgumentException("Angel kan inte var minder än noll");
         }
 
         tippingAngle = Math.min(tippingAngle + angle, maxTippingAngel );
@@ -34,8 +34,8 @@ public class Scania extends Vehicle implements TruckBed{
         if (getCurrentSpeed() != 0){
             throw new IllegalArgumentException("det går inte tippa när man kör");
         }
-        if (tippingAngle < 0){
-            throw new IllegalArgumentException("tippingAngel kan inte var minder än noll");
+        if (angle < 0){
+            throw new IllegalArgumentException("Angel kan inte var minder än noll");
         }
         tippingAngle = Math.max(tippingAngle - angle, 0 );
     }

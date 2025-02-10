@@ -8,7 +8,6 @@ class IvecoTest {
     void testStartLoadMode() {
         Iveco iveco = new Iveco();
         iveco.currentSpeed = 1;
-        //assertTrue(iveco.loadMode);
         assertThrows(IllegalArgumentException.class, iveco::startLoadMode);
     }
 
@@ -63,11 +62,11 @@ class IvecoTest {
         iveco.loadCar(saab);
         iveco.loadCar(volvo);
         iveco.loadCar(saab);
-        assertSame(3, iveco.loadedCars.size());
+        assertEquals(3, iveco.loadedCars.size());
         assertSame("Saab95", iveco.loadedCars.getFirst());
-        assertSame("Saab95", iveco.loadedCars.getLast());
+        assertSame("Saab95", iveco.loadedCars.getFirst());
         iveco.unloadCar();
-        assertSame(2, iveco.loadedCars.size());
+        assertEquals(2, iveco.loadedCars.size());
         assertSame("Volvo240", iveco.loadedCars.getLast());
 
     }
@@ -81,13 +80,13 @@ class IvecoTest {
 
         iveco.startLoadMode();
         iveco.setRampDown();
-       // assertThrows(IllegalArgumentException.class, () -> iveco.loadCar(scania));
+        // assertThrows(IllegalArgumentException.class, () -> iveco.loadCar(scania));
         iveco.loadCar(volvo);
         iveco.loadCar(saab);
         iveco.loadCar(volvo);
         iveco.loadCar(saab);
 
         assertThrows(IllegalArgumentException.class, () -> iveco.loadCar(saab));
-        assertSame(iveco.getLoadedCars(), iveco.loadedCars);
+        assertEquals(iveco.getLoadedCars(), iveco.loadedCars);
     }
 }

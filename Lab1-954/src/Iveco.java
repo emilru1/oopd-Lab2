@@ -5,15 +5,16 @@ public class Iveco extends Vehicle implements TruckRamp{
     protected boolean rampUp;
     protected boolean loadMode;
     protected boolean fairDistance;
+    protected int maxCapacity;
     protected ArrayList <String> loadedCars;
 
-    //protected Ramp ramp
     public Iveco() {
         super(2, 130,"Iveco", Color.BLUE);
         this.rampUp = true;
         this.loadMode = false;
         this.fairDistance = true;//  rimlig distans// ce med godsen;
-        this.loadedCars = new ArrayList<String>(4);
+        this.maxCapacity = 4;
+        this.loadedCars = new ArrayList<>(maxCapacity);
     }
 
     public double speedFactor() {
@@ -21,7 +22,7 @@ public class Iveco extends Vehicle implements TruckRamp{
         return enginePower * 0.01;
     }
     @Override
-    public void startLoadMode(){
+    public short startLoadMode(){
         if (getCurrentSpeed() > 0){
             throw new IllegalArgumentException("Lastbilen står ej stilla.");
         }
@@ -29,6 +30,7 @@ public class Iveco extends Vehicle implements TruckRamp{
             throw new IllegalArgumentException("Lastbilen är redan i LoadMode.");
         }
         this.loadMode = true;
+        return 0;
     }
     @Override
     public void exitLoadMode() {
@@ -65,8 +67,8 @@ public class Iveco extends Vehicle implements TruckRamp{
         if (!this.fairDistance){
             throw new IllegalArgumentException("Lastbilen är inte på ett rimligt avstånd till rampen.");
         }
-        if (this.loadedCars.size() >= 4){
-            throw new IllegalArgumentException("Lastbilen kan inte lasta fler än 4 bilar.");
+        if (this.loadedCars.size() >= maxCapacity){
+            throw new IllegalArgumentException("Lastbilen kan inte lasta fler än " + maxCapacity + " bilar.");
 
         }
         this.loadedCars.add(personalCar.modelName);
@@ -81,10 +83,11 @@ public class Iveco extends Vehicle implements TruckRamp{
             throw new IllegalArgumentException("Lastbilen har ingen bil lastad.");
         }
 
-        this.loadedCars.removeLast();
+        this.loadedCars.remove(this.loadedCars.size() - 1);
     }
     @Override
     public ArrayList<String> getLoadedCars() {
-        return this.loadedCars;
+        return new ArrayList<>(this.loadedCars);
+
     }
 }
