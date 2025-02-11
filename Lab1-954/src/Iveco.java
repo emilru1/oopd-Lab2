@@ -2,11 +2,11 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Iveco extends Vehicle implements TruckRamp{
-    protected boolean rampUp;
-    protected boolean loadMode;
-    protected boolean fairDistance;
-    protected int maxCapacity;
-    protected ArrayList <PersonalCar> loadedCars;
+    private boolean rampUp;
+    private boolean loadMode;
+    private boolean fairDistance;
+    private int maxCapacity;
+    private ArrayList <PersonalCar> loadedCars;
 
     public Iveco() {
         super(2, 130,"Iveco", Color.BLUE);
@@ -40,6 +40,10 @@ public class Iveco extends Vehicle implements TruckRamp{
         this.loadMode = false;
     }
     @Override
+    public boolean getLoadMode(){
+        return this.loadMode;
+    }
+    @Override
     public void setRampDown(){
         if (!this.loadMode){
             throw new IllegalArgumentException("Lastbilen är ej i LoadMode.");
@@ -59,6 +63,12 @@ public class Iveco extends Vehicle implements TruckRamp{
         }
         this.rampUp = true;
     }
+
+    @Override
+    public boolean getIsRampUp() {
+        return this.rampUp;
+    }
+
     @Override
     public void loadCar(PersonalCar personalCar){
         if (this.rampUp || !this.loadMode){
@@ -74,6 +84,21 @@ public class Iveco extends Vehicle implements TruckRamp{
         this.loadedCars.add(personalCar);
 
     }
+
+    @Override
+    public void setFairDistance(boolean boolDistance) {
+        if (this.fairDistance == boolDistance){
+            throw new IllegalArgumentException("FairDistance är redan det värdet.");
+        }
+
+        this.fairDistance = boolDistance;
+    }
+
+    @Override
+    public boolean getFairDistance() {
+        return this.fairDistance;
+    }
+
     @Override
     public void unloadCar(){
         if (this.rampUp || !this.loadMode){
