@@ -75,11 +75,13 @@ class IvecoTest {
         Iveco iveco = new Iveco();
         Saab95 saab = new Saab95();
         Volvo240 volvo = new Volvo240();
-        //Scania scania = new Scania();
+
 
         iveco.startLoadMode();
         iveco.setRampDown();
+        //Scania scania = new Scania();
         //assertThrows(IllegalArgumentException.class, () -> iveco.loadCar(scania));
+        // Ta bort utkommenteringarna så ser man att det inte går att lasta en Scania på Ivecon
         iveco.loadCar(volvo);
         iveco.loadCar(saab);
         iveco.loadCar(volvo);
