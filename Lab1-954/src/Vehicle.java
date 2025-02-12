@@ -9,8 +9,7 @@ public abstract class Vehicle implements Movable{
     protected double x;    // this two instans object är för position for bilar;
     protected double y;
     protected String direction;
-    private final static double trimFactor = 1.25;
-
+    
     public Vehicle(int nrDoors, double enginePower, String modelName, Color color) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
